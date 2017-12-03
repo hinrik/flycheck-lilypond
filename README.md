@@ -12,14 +12,20 @@ With [`use-package`][use-package] in your init file:
 (use-package flycheck
   :ensure t
   :defer t
-  :init (add-hook 'LilyPond-mode-hook 'flycheck-mode)
-  :config
-  (use-package flycheck-lilypond
-    :ensure t))
+  :init (add-hook 'LilyPond-mode-hook 'flycheck-mode))
+
+(use-package flycheck-lilypond
+  :ensure t)
 ```
 
 Or manually from [MELPA][] with <kbd>M-x package-refresh-contents</kbd>
-and <kbd>M-x package-install RET flycheck-lilypond</kbd>.
+and <kbd>M-x package-install RET flycheck-lilypond</kbd>, then you could
+have it loaded this way in your init file:
+
+```el
+(add-hook 'LilyPond-mode-hook 'flycheck-mode)
+(eval-after-load 'flycheck '(require 'flycheck-lilypond)
+```
 
 Usage
 -----
