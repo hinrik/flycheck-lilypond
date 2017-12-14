@@ -12,7 +12,7 @@ With [`use-package`][use-package] in your init file:
 (use-package flycheck
   :ensure t
   :defer t
-  :init (add-hook 'LilyPond-mode-hook 'flycheck-mode))
+  :hook (LilyPond-mode . flycheck-mode))
 
 (use-package flycheck-lilypond
   :ensure t)
