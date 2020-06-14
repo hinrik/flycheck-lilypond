@@ -44,9 +44,10 @@
 
 (flycheck-define-checker lilypond
   "A LilyPond syntax checker."
-  :command ("lilypond" "-s" "-o" temporary-directory source)
+  :command ("lilypond" "-l" "WARNING" "-o" temporary-directory source)
   :error-patterns
-  ((error line-start (file-name) ":" line ":" column ": error: " (message) line-end))
+  ((error line-start (file-name) ":" line ":" column ": error: " (message) line-end)
+   (warning line-start (file-name) ":" line ":" column ": warning: " (message) line-end))
   :modes LilyPond-mode)
 
 (add-to-list 'flycheck-checkers 'lilypond)
